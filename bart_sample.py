@@ -10,46 +10,46 @@ def summarize_text(text):
     inputs = tokenizer([text], max_length=1024, return_tensors='pt', truncation=True)
     
     # 要約の生成
-    summary_ids = model.generate(inputs['input_ids'], num_beams=4, min_length=400, max_length=3000, early_stopping=True)
+    summary_ids = model.generate(inputs['input_ids'], num_beams=4, min_length=50, max_length=1000, early_stopping=True)
     return tokenizer.decode(summary_ids[0], skip_special_tokens=True)
 
 if __name__ == "__main__":
     # サンプルのニュース記事
-    news_article = """千葉市中心部にイノシシ 警察官など3人けが
-2023年10月25日 12時36分 
+    news_article = """Finland's prime minister has accused Russia of helping migrants get into the country illegally, saying some have been helped by Russian border guards.
 
-25日未明、千葉市の中心部にイノシシが現れ、目撃した男性1人がけがをしました。イノシシは午前9時すぎに捕獲されましたが、この際、捕獲にあたった警察官2人もかまれてけがをしました。
+Finnish officials say migrants arrive by car before cycling across the border in small groups to claim asylum.
 
-千葉市中央区の住宅街などで、25日午前0時すぎから1時すぎにかけて、イノシシの目撃情報が相次いで寄せられました。
+Finland shares a 1,340km (833-mile) border with Russia, Europe's longest.
 
-警察や消防によりますと、このうち、30代の男性が千葉市中央区出洲港の住宅の敷地内で左足をかまれ、病院に搬送されました。
+The number of crossings remains small but has been rising this week. Border guards say they have registered around 89 crossings in two days.
 
-目撃情報はほかにも、千葉駅前のロータリーなど千葉市中央区の中心部で合わせて13件あったということです。
+That compares with 91 in the four months to 12 November.
 
-その後、午前9時ごろ、中央区中央港のふ頭で警察官らがイノシシを捕獲しましたが、この際、警察官2人が足をかまれ、けがをしました。
+Matti Pitkaniitty, a colonel in the Finnish border guard, told BBC News the migrants included citizens of countries including Iraq, Yemen and Syria who had arrived legally in Russia but were not authorised to enter Finland, which is an EU member state.
 
-捕獲される前には海を泳ぐなどして逃げ回っていたということです。
+Traditionally, Russian guards haven't allowed people to arrive at the Finnish border without proper documents, he said. But he added Russian authorities had definitely changed their policy in recent months.
 
-千葉市によりますと、イノシシは体重が42キロ余り、体長が1メートル余りのメスで、捕獲後、山林に埋めて処分されたということです。
+Many of the migrants are crossing into Finland by bicycle, exploiting an agreement allowing cycling across the border. Last week Finland banned crossings by bike.
 
-イノシシの出没を受けて、千葉市内では警察が住宅街や学校の付近を中心にパトロールを行い、注意を呼びかけました。
+Most of the activity has been seen around the border crossings at Nuijamaa and Vaalimaa, in south-eastern Finland.
 
-北海道 札幌市内でもシカの目撃情報相次ぐ 
-一方、札幌市では25日、シカの目撃情報が相次いで寄せられ、警察などが付近で警戒にあたっています。
+Map
+1px transparent line
+At a news conference on Tuesday, Prime Minister Petteri Orpo accused Russian authorities of facilitating the illegal crossings.
 
-北海道大学植物園は24日、シカが迷い込んだため臨時休園しましたが、25日はいないことが確認され、開園しています。
+It is clear that these people are helped and they are also being escorted or transported to the border by border guards, Mr Orpo said.
 
-札幌市東区東苗穂にある住宅の庭で25日、角のあるシカ1頭が確認されました。
+In 2021, thousands of migrants from Middle Eastern and African countries crossed into EU member states Poland and Lithuania after flying to Belarus, a close Russian ally.
 
-シカは木陰に寝そべったり、時折、庭の中を移動して草のようなものを食べたりしていて、警察や区の職員が警戒にあたっています。
+The EU at the time accused Belarusian leader Alexander Lukashenko of using migration as a weapon of "hybrid warfare" to destabilise the bloc.
 
-住民は午前8時ごろに、警察からシカがいることを知らされたということで、「ここに住んで50年以上になるがシカが出たのは初めてで、びっくりしている。角があるので怖い」と話していました。
+Mr Pitkaniitty said the small numbers seen so far remained manageable and stressed that Finnish authorities have tools available to them to react in case crossings increase.
 
-また、警察によりますと、これに先立ち、25日午前1時半ごろ、札幌市中央区北4条西1丁目のあたりで、午前2時10分ごろには東区北7条東3丁目のあたりで、それぞれ、通行人からシカを目撃したとの通報があったということです。
+Interior Minister Mari Rantanen said on Tuesday that her government was preparing to increase security on the border.
 
-一方、中央区にある北海道大学植物園は24日、角のあるシカ1頭が迷い込んだため臨時休園しましたが、25日朝、園内にいないことが確認されたとして、通常より1時間遅い午前10時から開園しています。
+This way into the EU via Russia was much safer than other routes used by migrants, such as crossing the Mediterranean by sea, Mr Pitkaniitty added.
 
-札幌市では、これまでに目撃されたシカと、植物園にいたシカの関連も含めて調べています。"""
+Once word gets around we may see a rapid increase in numbers. Smugglers and migrants don't know when the opportunity will end."""
     
     # 要約の取得
     summary = summarize_text(news_article)
